@@ -1,0 +1,9 @@
+
+file upload - https://github.com/shuyu/angular-material-fileinput
+file upload demo - http://shuyu.github.io/angular-material-fileinput/example/
+
+
+routing - https://github.com/angular-ui/ui-router/wiki/Multiple-Named-Views
+
+
+lazy load - https://ciphertrick.com/2016/07/06/lazy-load-modules-and-controllers-in-angularjs/

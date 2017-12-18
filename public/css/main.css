@@ -708,3 +708,10 @@ md-list.flex .fa{
 tbody{
     font-size: 14px;
 }
+.login-form.row {
+    margin-top: 65px;
+}
+.login-container{
+    padding: 10px;
+    background: #fff;
+}

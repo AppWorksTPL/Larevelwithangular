@@ -41,6 +41,7 @@
   </div>
   <!-- Angular Material requires Angular.js Libraries -->
   <script type='text/javascript'  src="js/angular.min.js"></script>
+  <script type='text/javascript'  src="js/angular-messages.min.js"></script>
   <script type='text/javascript'  src="js/angular-animate.min.js"></script>
   <script type='text/javascript'  src="js/angular-aria.min.js"></script>
   <script type='text/javascript'  src="js/angular-messages.min.js"></script>
@@ -56,6 +57,7 @@
   <script type='text/javascript'  src="lazyload.js"></script>
   <script type='text/javascript'  src="controller/appCtrl.js"></script>
   <script type='text/javascript'  src="controller/configCtrl.js"></script>
+  <script type='text/javascript'  src="controller/loginCtrl.js"></script>
   <script type='text/javascript'  src="ui-router.js"></script>
 </body>
 </html>

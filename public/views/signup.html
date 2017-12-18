@@ -1,0 +1,89 @@
+<div ng-controller="loginCtrl" layout="column" class="md-inline-form">
+  <div class="login-form row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 login-container">
+      <form name="signupForm" ng-submit="signup_form(signup)" novalidate>
+        <div layout-gt-sm="row">
+          <h2>SignUp</h2>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Referral Code</label>
+            <input name="referral" type="text" ng-model="signup.referral" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': signupForm.firstname.$invalid && signupForm.firstname.$dirty, 'has-success': signupForm.firstname.$valid}">
+            <label>Firstname</label>
+            <input name="firstname" type="text" ng-model="signup.firstname" required="required" minlength="3">
+            <div ng-messages="signupForm.firstname.$dirty && signupForm.firstname.$error" role="alert" multiple>
+              <div ng-message="required">Firstname is required.</div>
+              <div ng-message="minlength">Firstname must be 3 digit long .</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': signupForm.lastname.$invalid && signupForm.lastname.$dirty, 'has-success': signupForm.lastname.$valid}">
+            <label>Lastname</label>
+            <input name="lastname" type="text" ng-model="signup.lastname" required="required" minlength="3">
+            <div ng-messages="signupForm.lastname.$dirty && signupForm.lastname.$error" role="alert" multiple>
+              <div ng-message="required">Lastname is required.</div>
+              <div ng-message="minlength">Lastname must be 3 digit long .</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': signupForm.mobile.$invalid && signupForm.mobile.$dirty, 'has-success': signupForm.mobile.$valid}">
+            <label>Mobile</label>
+            <input name="mobile" type="text" ng-model="signup.mobile" required="required" minlength="10" ng-pattern="/^\d{10}$/">
+            <div ng-messages="signupForm.mobile.$dirty && signupForm.mobile.$error" role="alert" multiple>
+              <div ng-message="required">Mobile is required.</div>
+              <div ng-message="minlength">Mobile must be 10 digit long .</div>
+              <div ng-message="pattern">Please enter valid Mobile No. .</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': signupForm.email.$invalid && signupForm.email.$dirty, 'has-success': signupForm.email.$valid}">
+            <label>Email</label>
+            <input name="email" type="email" ng-model="signup.email" required="required">
+            <div ng-messages="signupForm.email.$dirty && signupForm.email.$error" role="alert" multiple>
+              <div ng-message="required">Email is required.</div>
+              <div ng-message="email">Please enter a valid email</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': signupForm.password.$invalid && signupForm.password.$dirty, 'has-success': signupForm.password.$valid}">
+            <label>Password</label>
+            <input ng-model="signup.password" type="Password" name="password" ng-minlength="6" ng-maxlength="50" required="required">
+            <div ng-messages="signupForm.password.$dirty && signupForm.password.$error" role="alert" multiple>
+              <div ng-message="required">Password is required.</div>
+              <div ng-message="minlength">Password must be 6 digit long .</div>
+              <div ng-message="maxlength">Password should no 50 digit long .</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': signupForm.c_password.$invalid && signupForm.c_password.$dirty, 'has-success': signupForm.c_password.$valid}">
+            <label>Confirm Password</label>
+            <input ng-model="signup.c_password" type="Password" name="c_password" ng-minlength="6" ng-maxlength="50" required="required">
+            <div ng-messages="signupForm.c_password.$dirty && signupForm.c_password.$error" role="alert" multiple>
+              <div ng-message="required">Password is required.</div>
+              <div ng-message="minlength">Password must be 6 digit long .</div>
+              <div ng-message="maxlength">Password should no 50 digit long .</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm >
+            <md-checkbox ng-model="signup.agree" aria-label="Checkbox 1">
+                <a href="terms&condation.html"></a>Agree terms and condation
+            </md-checkbox>
+        </md-input-container>    
+        
+          <md-input-container class="md-block pull-right" flex-gt-sm>
+            <md-button class="md-raised md-warn" type="submit" ng-disabled="signupForm.email.$invalid || signupForm.password.$invalid || signupForm.c_password.$invalid || signupForm.mobile.$invalid || signupForm.firstname.$invalid || signupForm.lastname.$invalid">LOGIN</md-button>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <p>Already have an account <a ui-sref="login">LogIn</a></p>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>

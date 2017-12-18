@@ -3,6 +3,7 @@ var app = angular.module('app', [
   'lfNgMdFileInput',
   'ui.router',
   'angular-loading-bar',
-  'oc.lazyLoad'
+  'oc.lazyLoad',
+  'ngMessages'
   ])
    

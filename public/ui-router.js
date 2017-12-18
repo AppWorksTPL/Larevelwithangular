@@ -89,6 +89,26 @@ app.config(function($stateProvider) {
             }
         },
         url: "/edit_message",
+    }).state('login', {
+        views: {
+            'navbar': {
+                templateUrl: 'nav.html',
+            },
+            'main': {
+                templateUrl: "views/login.html"
+            }
+        },
+        url: "/login",
+    }).state('signup', {
+        views: {
+            'navbar': {
+                templateUrl: 'nav.html',
+            },
+            'main': {
+                templateUrl: "views/signup.html"
+            }
+        },
+        url: "/signup",
     }).state('notfound', {
         views: {
             'navbar': {

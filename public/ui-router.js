@@ -109,6 +109,16 @@ app.config(function($stateProvider) {
             }
         },
         url: "/signup",
+    }).state('forget_password', {
+        views: {
+            'navbar': {
+                templateUrl: 'nav.html',
+            },
+            'main': {
+                templateUrl: "views/forget_password.html"
+            }
+        },
+        url: "/forget_password",
     }).state('notfound', {
         views: {
             'navbar': {

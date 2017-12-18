@@ -5,6 +5,7 @@
         <div layout-gt-sm="row">
           <h2>Login</h2>
         </div>
+        <div class="devider"></div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': loginForm.email.$invalid && loginForm.email.$dirty, 'has-success': loginForm.email.$valid }">
             <label>Email</label>
@@ -26,18 +27,18 @@
             </div>
           </md-input-container>
         </div>
-
-        <md-checkbox ng-model="login.remember" aria-label="Checkbox 1">
-            Remember Me
-        </md-checkbox>
-
         <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm >
+            <md-checkbox ng-model="login.remember" aria-label="Checkbox 1">
+                Remember Me
+            </md-checkbox>
+          </md-input-container>
           <md-input-container class="md-block" flex-gt-sm>
             <md-button class="md-raised md-warn" type="submit" ng-disabled="loginForm.email.$invalid || loginForm.password.$invalid">LOGIN</md-button>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
-          <p><a ui-sref="#/forget_password">Forget Password ?</a></p>
+          <p><a ui-sref="forget_password">Forget Password ?</a></p>
         </div>
         <div layout-gt-sm="row">
           <p><a ui-sref="signup">Sign Up</a></p>

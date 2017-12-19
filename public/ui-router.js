@@ -36,8 +36,7 @@ app.config(function($stateProvider) {
                 templateUrl: "views/site_config.html"
             }
         }
-    })
-        .state('showsiteconfig', {
+    }).state('showsiteconfig', {
         views: {
             'navbar': {
                 templateUrl: 'nav.html',
@@ -119,6 +118,46 @@ app.config(function($stateProvider) {
             }
         },
         url: "/forget_password",
+    }).state('catalog', {
+         views: {
+            'navbar': {
+                templateUrl: 'nav.html',
+            },
+            'sidebar': {
+                templateUrl: 'sidebar.html',
+            },
+            'main': {
+                templateUrl: "views/catalog/catalog.html"
+            }
+        },
+        url: "/catalog",
+    }).state('add_product', {
+         views: {
+            'navbar': {
+                templateUrl: 'nav.html',
+            },
+            'sidebar': {
+                templateUrl: 'sidebar.html',
+            },
+            'main': {
+                templateUrl: "views/catalog/add_product.html"
+            }
+        },
+        url: "/add_product",
+    })
+    .state('add_single_product', {
+         views: {
+            'navbar': {
+                templateUrl: 'nav.html',
+            },
+            'sidebar': {
+                templateUrl: 'sidebar.html',
+            },
+            'main': {
+                templateUrl: "views/catalog/add_single_product.html"
+            }
+        },
+        url: "/add_single_product",
     }).state('notfound', {
         views: {
             'navbar': {

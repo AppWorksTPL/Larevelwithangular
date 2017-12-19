@@ -1,0 +1,211 @@
+<div ng-controller="catalogCtrl as ctrl" layout="column" class="md-inline-form">
+  <div class="page-title catalogpagetitle">
+    <h4> Add single product</h4>
+    
+  </div>
+  <div class="devider"></div>
+        <div style="margin-left:100px ">
+          <pre>
+            {{ctrl.selectedItem.value | json}}
+            {{product | json}}
+          </pre>
+        </div>
+        
+  <div class="page-container">
+    <div class="add-product-container ">
+      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+        <form ng-submit="form.add_product()" name="productForm">
+        <md-content>
+          <md-tabs md-dynamic-height="" md-border-bottom="">
+            <md-tab label="Category">
+              <md-content class="md-padding">
+                <h5 class="">Choose Category</h5>
+                 <div  layout="column" ng-cloak="" class="autocompletedemoBasicUsage product-search">
+                    
+                      
+                      <md-autocomplete
+                      ng-disabled="ctrl.isDisabled" 
+                      md-no-cache="ctrl.noCache" 
+                      md-selected-item="ctrl.selectedItem" 
+                      md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" 
+                      md-search-text="ctrl.searchText" 
+                      md-selected-item-change="ctrl.selectedItemChange(item)" 
+                      md-items="item in ctrl.querySearch(ctrl.searchText)" 
+                      md-item-text="item.display" 
+                      md-min-length="0"
+                      placeholder="Search for category">
+                        <md-item-template>
+                          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                          No states matching "{{ctrl.searchText}}" were found.
+                          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                        </md-not-found>
+                      </md-autocomplete>
+                   
+                  </div>
+                  <div class="">
+                    <md-button class="md-fab md-mini existing-product-search" aria-label="Eat cake">
+                      <md-icon><i class="ion-ios-search-strong"></i></md-icon>
+                    </md-button>
+                  </div>
+            </md-tab>
+            <md-tab label="Key Details">
+              <md-content class="md-padding">
+                <h5 class="">Enter Product Details for Category "Art & Hobbies"</h5>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.skucode.$invalid && productForm.skucode.$dirty, 'has-success': productForm.skucode.$valid }">
+                      <label>SKU Code</label>
+                      <input name="skucode" ng-model="product.skucode" required="required" ng-minlength="3">
+                      <div ng-messages="productForm.skucode.$dirty && productForm.skucode.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">SKU Code is required.</div>
+                        <div ng-message="minlength" class="my-message">SKU code must be 3 characters Long.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.brand.$invalid && productForm.brand.$dirty, 'has-success': productForm.brand.$valid }">
+                      <label>Brand</label>
+                      <input name="brand" ng-model="product.brand" required>
+                      <div  ng-messages="productForm.brand.$dirty && productForm.brand.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand name is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.productName.$invalid && productForm.productName.$dirty, 'has-success': productForm.productName.$valid }">
+                      <label>Product Name</label>
+                      <input name="productName" ng-model="product.productName" required ng-minlength="10">
+                      <div ng-messages="productForm.productName.$dirty && productForm.productName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Product Name is required.</div>
+                        <div ng-message="minlength" class="my-message">Product Name must be 10 characters Long.</div>
+                      </div>
+                    </md-input-container>
+                    
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.description.$invalid && productForm.description.$dirty, 'has-success': productForm.description.$valid }">
+                      <label>Description</label>
+                      <textarea name="description" ng-model="product.description" required ng-minlength="80" ng-maxlength="1000" md-maxlength="1000" rows="5"></textarea>
+                      <div ng-messages="productForm.description.$dirty && productForm.description.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Product Description is required.</div>
+                        <div ng-message="minlength" class="my-message">Product Description should 80 to 1000 characters Long.</div>
+                        <div ng-message="maxlength" class="my-message">Product Description should 80 to 1000 characters Long.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>EAN</label>
+                      <input name="ean" ng-model="product.ean" >
+                      
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>UPC</label>
+                      <input name="upc" ng-model="product.upc">
+                      
+                    </md-input-container>
+                  </div>
+                </md-content>
+             </md-tab>
+            <md-tab label="Images">
+              <md-content class="md-padding">
+                <h5 >Add Product Image</h5>
+                <div class="marginud-30"></div>
+                <h5>Select Main Product Image</h5>
+                <lf-ng-md-file-input lf-files="filesOnFileClick" lf-on-file-click="onFileClick" lf-on-file-remove="onFileRemove" preview drag progress ></lf-ng-md-file-input>
+                <div class="marginud-30"></div>
+                <h5>Select Product Gallery Images</h5>
+                <lf-ng-md-file-input lf-files="filesOnFileClick" lf-on-file-click="onFileClick" lf-on-file-remove="onFileRemove" preview drag multiple progress></lf-ng-md-file-input>
+              </md-content>
+            </md-tab>
+            <md-tab label="Attributes">
+              <md-content class="md-padding">
+                <h5">Attributes</h5>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>State</label>
+                  <md-select ng-model="user.state">
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}"> {{state.abbrev}} </md-option>
+                  </md-select>
+                </md-input-container>
+              </md-content>
+            </md-tab>
+            <md-tab label="Shipping & Pricing">
+              <md-content class="md-padding">
+                <h5>Shipping & Pricing</h5>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>MRP</label>
+                      <input ng-model="product.skucode" required>
+                      <div ng-messages="userForm.firstName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">SKU Code is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Selling Price</label>
+                      <input ng-model="product.brand" required>
+                      <div ng-messages="userForm.lastName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Inventory</label>
+                      <input ng-model="product.skucode" required>
+                      <div ng-messages="userForm.firstName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">SKU Code is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Shipping Time in Days</label>
+                      <input ng-model="product.brand" required>
+                      <div ng-messages="userForm.lastName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Height (CM)</label>
+                      <input ng-model="product.skucode" required>
+                      <div ng-messages="userForm.firstName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">SKU Code is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Width (CM)</label>
+                      <input ng-model="product.brand" required>
+                      <div ng-messages="userForm.lastName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Length (CM)</label>
+                      <input ng-model="product.skucode" required>
+                      <div ng-messages="userForm.firstName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">SKU Code is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>Weight (G)</label>
+                      <input ng-model="product.brand" required>
+                      <div ng-messages="userForm.lastName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                   <div layout-gt-sm="row">
+                    <md-button md-no-ink class="md-raised md-primary">Preview</md-button>
+                    <md-button class="md-raised md-warn">Save to Draft</md-button>
+                   </div>  
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+

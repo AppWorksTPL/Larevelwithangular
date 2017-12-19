@@ -4,6 +4,7 @@ var app = angular.module('app', [
   'ui.router',
   'angular-loading-bar',
   'oc.lazyLoad',
-  'ngMessages'
+  'ngMessages',
+  'material.svgAssetsCache'
   ])
    

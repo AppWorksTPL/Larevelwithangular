@@ -30,6 +30,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-family: 'Roboto Condensed', sans-serif!important;
+    font-weight: 400!important;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: 700!important;
 }
 .navbar-default{
     border-color: #E40046!important;
@@ -651,10 +656,10 @@ md-toolbar._md-toolbar-transitions {
 .page-content {
     margin-top: 22px;
     background: #e8e8e8;
+    padding-right: 0;
 }
 .page-title {
     margin-top: 14px;
-    margin-left: 40px;
     padding-left: 50px;
     background: #fff;
     width: 100%;
@@ -714,4 +719,69 @@ tbody{
 .login-container{
     padding: 10px;
     background: #fff;
+}
+.page-title a{
+    text-decoration: none;
+    color: #333;
+    padding: 8px 14px; 
+}
+.navbar{
+    margin-bottom: 0px!important;
+}
+.catalog-head{
+    float: left;
+}
+.catalogpagetitle{
+    padding-top: 1em;
+}
+.product-search{
+    float: left;
+}
+.add-search-product{
+    margin-right: 25px;
+}
+.add-product-btn{
+    float: left;
+    margin: 0px 15px;
+    padding: 6px 5px;
+    border: 1px solid #333;
+    font-size: 18px;
+    border-radius: 3px;
+}
+.add-product-btn a{
+    text-decoration: none;
+    color: #E40046;
+}
+.add-product-btn a:hover{
+    text-decoration: none;
+    color: #E40046;
+}
+.add-product-btn i:before{
+    font-size: 22px;
+    padding-right: 10px;
+}
+.main-view{
+    padding:0;
+}
+.existing-product-search{
+        margin: 0 15px!important;
+}
+.add-product-container{
+    padding: 10px 20px;
+}
+.add-product-btn .single{
+    padding: 0px 15px;
+}
+.add-single-product-btn{
+   padding: 6px 23px;
+    text-decoration: none;
+    color: #e40046;
+    border: 1px solid #000;
+}
+.add-single-product-btn:hover{
+    text-decoration: none;
+    color: #e40046;
+}
+.marginud-30{
+    margin: 30px 0px;
 }

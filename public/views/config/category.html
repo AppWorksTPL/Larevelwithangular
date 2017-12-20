@@ -1,0 +1,153 @@
+<div ng-controller="configCtrl" layout="column" class="md-inline-form">
+  <div class="page-title title">
+    <h4><i class="fa fa-long-arrow-left" aria-hidden="true"></i> ADD &amp; EDIT CATEGORY</h4>
+  </div>
+  <div class="devider"></div>
+  <div class="page-container content-section ">
+    <div class="col-lg-6">
+      <form name="categoryForm" ng-submit="add_category(category,ev)">
+        <div layout-gt-sm="row" flex-gt-sm>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Parent Category</label>
+            <md-select ng-model="category.categoryParent">
+              <md-option value="0"> Select Parent </md-option>
+              <md-option value="1"> Catrgory 1 </md-option>
+              <md-option value="2"> Catrgory 2 </md-option>
+              <md-option value="3"> Catrgory 3 </md-option>
+              <md-option value="4"> Catrgory 4 </md-option>
+              <md-option value="5"> Catrgory 5 </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.cat_name.$invalid && categoryForm.cat_name.$dirty, 'has-success': categoryForm.cat_name.$valid }">
+            <label>Category Name</label>
+            <input name="cat_name" type="text" ng-model="category.categoryName" required>
+            <div ng-messages="categoryForm.cat_name.$dirty && categoryForm.cat_name.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">Category Name is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.cat_identifire.$invalid && categoryForm.cat_identifire.$dirty, 'has-success': categoryForm.cat_identifire.$valid }">
+            <label>Category Identifire</label>
+            <input name="cat_identifire"  type="text" ng-model="category.categoryIdentifire" required>
+            <div ng-messages="categoryForm.cat_identifire.$dirty && categoryForm.cat_identifire.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">Category Identifire is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.cat_description.$invalid && categoryForm.cat_description.$dirty, 'has-success': categoryForm.cat_description.$valid }">
+            <label>Category Description</label>
+            <input name="cat_description" type="text" ng-model="category.categoryDescription" required>
+            <div ng-messages="categoryForm.cat_description.$dirty && categoryForm.cat_description.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">Category Description is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.cgst.$invalid && categoryForm.cgst.$dirty, 'has-success': categoryForm.cgst.$valid }">
+            <label>CGST</label>
+            <input name="cgst"  type="number" ng-model="category.categoryCgst" required>
+            <div ng-messages="categoryForm.cgst.$dirty && categoryForm.cgst.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">CGST is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.sgst.$invalid && categoryForm.sgst.$dirty, 'has-success': categoryForm.sgst.$valid }">
+            <label>SGST</label>
+            <input name="sgst" type="number" ng-model="category.categorySgst" required>
+            <div ng-messages="categoryForm.sgst.$dirty && categoryForm.sgst.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">SGST is required.</div>
+            </div>
+          </md-input-container>
+         </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm >
+            <label>IGST</label>
+            <input name="igst" type="number" ng-model="category.categoryIgst" readonly value="">
+            
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.commission.$invalid && categoryForm.commission.$dirty, 'has-success': categoryForm.commission.$valid }">
+            <label>Commission</label>
+            <input name="commission" type="number" ng-model="category.categoryCommission" required>
+            <div ng-messages="categoryForm.commission.$dirty && categoryForm.commission.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">Commission is required.</div>
+            </div>
+          </md-input-container>
+          
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <lf-ng-md-file-input lf-files="files" progress></lf-ng-md-file-input>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': categoryForm.status.$invalid && categoryForm.status.$dirty, 'has-success': categoryForm.status.$valid }">
+            <label>Status :</label>
+            <br>
+            <br>
+            <md-radio-group name="status" ng-model="category.categoryStatus" required>
+              <md-radio-button value="1" class="">Enable</md-radio-button>
+              <md-radio-button value="0" class="">Disable </md-radio-button>
+            </md-radio-group>
+            <div ng-messages="categoryForm.status.$dirty && categoryForm.status.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">Status is required.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-button class="md-raised md-primary" type="submit" >Submit</md-button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <md-content>
+        <md-list class="md-dense" flex>
+          <md-list-item class="md-3-line"> <img ng-src="images/appwork.png" class="md-avatar" alt="img" />
+            <div class="md-list-item-text" layout="column">
+              <h3>Category Name</h3>
+              <h4>Category Identifire</h4>
+              <p>Category description goes here .</p>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-pencil" aria-hidden="true"></i> </md-icon>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-trash" aria-hidden="true"></i> </md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+        <md-list class="md-dense" flex>
+          <md-list-item class="md-3-line"> <img ng-src="images/appwork.png" class="md-avatar" alt="img" />
+            <div class="md-list-item-text" layout="column">
+              <h3>Category Name</h3>
+              <h4>Category Identifire</h4>
+              <p>Category description goes here .</p>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-pencil" aria-hidden="true"></i> </md-icon>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-trash" aria-hidden="true"></i> </md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+        <md-list class="md-dense" flex>
+          <md-list-item class="md-3-line"> <img ng-src="images/appwork.png" class="md-avatar" alt="img" />
+            <div class="md-list-item-text" layout="column">
+              <h3>Category Name</h3>
+              <h4>Category Identifire</h4>
+              <p>Category description goes here .</p>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-pencil" aria-hidden="true"></i> </md-icon>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-trash" aria-hidden="true"></i> </md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+        <md-list class="md-dense" flex>
+          <md-list-item class="md-3-line"> <img ng-src="images/appwork.png" class="md-avatar" alt="img" />
+            <div class="md-list-item-text" layout="column">
+              <h3>Category Name</h3>
+              <h4>Category Identifire</h4>
+              <p>Category description goes here .</p>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-pencil" aria-hidden="true"></i> </md-icon>
+              <md-icon class="md-secondary md-hue-3 cat-action"><i class="fa fa-trash" aria-hidden="true"></i> </md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </div>
+  </div>
+</div>

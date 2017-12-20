@@ -16,14 +16,8 @@ app.config(function($stateProvider) {
             'main': {
                 templateUrl: 'views/home.html'
             }
-        },
-        resolve: {
-            loadfiles: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load('home');
-            }]
         }
-    })
-        .state('siteconfig', {
+    }).state('siteconfig', {
         url: "/siteconfig",
         views: {
             'navbar': {
@@ -33,7 +27,7 @@ app.config(function($stateProvider) {
                 templateUrl: 'sidebar.html',
             },
             'main': {
-                templateUrl: "views/site_config.html"
+                templateUrl: "views/config/site_config.html"
             }
         }
     }).state('showsiteconfig', {
@@ -45,7 +39,7 @@ app.config(function($stateProvider) {
                 templateUrl: 'sidebar.html',
             },
             'main': {
-                templateUrl: "views/show_site_config.html"
+                templateUrl: "views/config/show_site_config.html"
             }
         },
         url: "/showsiteconfig",
@@ -58,7 +52,7 @@ app.config(function($stateProvider) {
                 templateUrl: 'sidebar.html',
             },
             'main': {
-                templateUrl: "views/category.html"
+                templateUrl: "views/config/category.html"
             }
         },
         url: "/category",
@@ -71,7 +65,7 @@ app.config(function($stateProvider) {
                 templateUrl: 'sidebar.html',
             },
             'main': {
-                templateUrl: "views/message.html"
+                templateUrl: "views/config/message.html"
             }
         },
         url: "/message",
@@ -84,7 +78,7 @@ app.config(function($stateProvider) {
                 templateUrl: 'sidebar.html',
             },
             'main': {
-                templateUrl: "views/edit_message.html"
+                templateUrl: "views/config/edit_message.html"
             }
         },
         url: "/edit_message",

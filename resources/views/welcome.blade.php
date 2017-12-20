@@ -43,6 +43,7 @@
     </section>
   </div>
   <!-- Angular Material requires Angular.js Libraries -->
+  <script type='text/javascript'  src="js/jquery.min.js"></script>
   <script type='text/javascript'  src="js/angular.min.js"></script>
   <script type='text/javascript'  src="js/angular-messages.min.js"></script>
   <script type='text/javascript'  src="js/angular-animate.min.js"></script>
@@ -54,7 +55,6 @@
   <script type="text/javascript"  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
   <script type='text/javascript'  src="js/angular-material.min.js"></script>
   <script type='text/javascript'  src="js/lf-ng-md-file-input.min.js"></script>
-  <script type='text/javascript'  src="js/jquery.min.js"></script>
   <script type='text/javascript'  src="js/bootstrap.min.js"></script>
   <script type='text/javascript'  src="js/main.js"></script>
   <script type='text/javascript'  src="app.js"></script>

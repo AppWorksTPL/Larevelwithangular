@@ -1,0 +1,38 @@
+<div ng-controller="configCtrl" layout="column" class="md-inline-form">
+  <div class="page-title title">
+    <h4><i class="fa fa-long-arrow-left" aria-hidden="true"></i> EDIT SITE CONFIGURATION</h4> </div>
+  <div class="devider"></div>
+  <div class="page-container content-section col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+    <form name="userForm">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>SITE CONFIG NAME</label>
+          <input ng-model="user.lastName" required>
+          <div ng-messages="userForm.lastName.$error" role="alert" multiple>
+            <div ng-message="required" class="my-message">SITE CONFIG NAME is required.</div>
+          </div>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>SITE CONFIG VALUE</label>
+          <input ng-model="user.lastName" required>
+          <div ng-messages="userForm.lastName.$error" role="alert" multiple>
+            <div ng-message="required" class="my-message">SITE CONFIG VALUE is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>SITE CONFIG DESCRIPTION</label>
+          <input ng-model="user.address" required>
+          <div ng-messages="userForm.address.$error" role="alert" multiple>
+            <div ng-message="required" class="my-message">SITE CONFIG DESCRIPTION is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-button class="md-raised md-primary" ng-click="submitFrom()">Submit</md-button>
+      </div>
+    </form>
+  </div>
+</div>

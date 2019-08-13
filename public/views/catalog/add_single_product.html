@@ -1,0 +1,224 @@
+<div ng-controller="catalogCtrl as ctrl" layout="column" class="md-inline-form">
+  <div class="page-title catalogpagetitle">
+    <h4> Add single product</h4>
+    
+  </div>
+  <div class="devider"></div>
+    <div style="margin-left:100px ">
+      <pre>
+        {{product | json}}
+      </pre>
+    </div>
+        
+  <div class="page-container">
+    <div class="add-product-container ">
+      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+        <form ng-submit="add_product(product)" name="productForm" novalidate>
+        <md-content>
+          <md-tabs md-dynamic-height="" md-border-bottom="">
+            <md-tab label="Category">
+              <md-content class="md-padding">
+                <h5 class="">Choose Category</h5>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.category.$invalid && productForm.category.$dirty, 'has-success': productForm.category.$valid }">
+                      <label>Category</label>
+                      <input name="category" type="text" ng-model="product.category" required="required" ng-minlength="3">
+                      <div ng-messages="productForm.category.$dirty && productForm.category.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Category is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-button class="md-fab md-mini existing-product-search" aria-label="Eat cake">
+                      <md-icon><i class="ion-ios-search-strong"></i></md-icon>
+                    </md-button>
+                </md-content>  
+            </md-tab>
+            <md-tab label="Key Details">
+              <md-content class="md-padding">
+                <h5 class="">Enter Product Details for Category "Art & Hobbies"</h5>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.skucode.$invalid && productForm.skucode.$dirty, 'has-success': productForm.skucode.$valid }">
+                      <label>SKU Code</label>
+                      <input name="skucode" type="text" ng-model="product.skucode" required="required" ng-minlength="3">
+                      <div ng-messages="productForm.skucode.$dirty && productForm.skucode.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">SKU Code is required.</div>
+                        <div ng-message="minlength" class="my-message">SKU code must be 3 characters Long.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.brand.$invalid && productForm.brand.$dirty, 'has-success': productForm.brand.$valid }">
+                      <label>Brand</label>
+                      <input name="brand" type="text" ng-model="product.brand" required>
+                      <div  ng-messages="productForm.brand.$dirty && productForm.brand.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand name is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.productName.$invalid && productForm.productName.$dirty, 'has-success': productForm.productName.$valid }">
+                      <label>Product Name</label>
+                      <input name="productName" type="text" ng-model="product.productName" required ng-minlength="10">
+                      <div ng-messages="productForm.productName.$dirty && productForm.productName.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Product Name is required.</div>
+                        <div ng-message="minlength" class="my-message">Product Name must be 10 characters Long.</div>
+                      </div>
+                    </md-input-container>
+                    
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.description.$invalid && productForm.description.$dirty, 'has-success': productForm.description.$valid }">
+                      <label>Description</label>
+                      <textarea name="description" ng-model="product.description" required ng-minlength="80" ng-maxlength="1000" md-maxlength="1000" rows="5"></textarea>
+                      <div ng-messages="productForm.description.$dirty && productForm.description.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Product Description is required.</div>
+                        <div ng-message="minlength" class="my-message">Product Description should 80 to 1000 characters Long.</div>
+                        <div ng-message="maxlength" class="my-message">Product Description should 80 to 1000 characters Long.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>EAN</label>
+                      <input name="ean" type="text" ng-model="product.ean" >
+                      
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label>UPC</label>
+                      <input name="upc" type="text" ng-model="product.upc">
+                      
+                    </md-input-container>
+                  </div>
+                </md-content>
+             </md-tab>
+            <md-tab label="Images">
+              <md-content class="md-padding">
+                <h5 >Add Product Image</h5>
+                <div class="marginud-30"></div>
+                <h5>Select Main Product Image</h5>
+                <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.mainImage.$invalid && productForm.mainImage.$dirty, 'has-success': productForm.mainImage.$valid }">
+                  <lf-ng-md-file-input 
+                    name="mainImage"  
+                    lf-files="files01" 
+                    lf-on-file-click="onFileClick" 
+                    lf-on-file-remove="onFileRemove" 
+                    preview drag progress lf-required 
+                    accept="image/jpeg" 
+                    lf-drag-and-drop-label="Upload Main Product image" 
+                    lf-filesize="100KB">
+                  </lf-ng-md-file-input>
+                  <div ng-messages="productForm.mainImage.$dirty && productForm.mainImage.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">Product Image is required.</div>
+                    <div ng-message="filesize" class="my-message">File size must be less then 100KB.</div>
+                  </div>
+                </md-input-container>
+                <div class="marginud-30"></div>
+                <h5>Select Product Gallery Images</h5>
+                <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.galleryImage.$invalid && productForm.galleryImage.$dirty, 'has-success': productForm.galleryImage.$valid }">
+                  <lf-ng-md-file-input 
+                    name="galleryImage" 
+                    lf-files="files03" 
+                    lf-on-file-click="onFileClick" 
+                    lf-on-file-remove="onFileRemove" 
+                    preview drag multiple progress 
+                    lf-required accept="image/jpeg" 
+                    lf-drag-and-drop-label="Upload Product Gallery Images" 
+                    lf-filesize="100KB" 
+                    lf-maxcount="5">
+                  </lf-ng-md-file-input>
+                  <div ng-messages="productForm.galleryImage.$dirty && productForm.galleryImage.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">Product Image is required.</div>
+                    <div ng-message="maxcount" class="my-message">Not more then 5 files</div>
+                    <div ng-message="filesize" class="my-message">File size must be less then 100KB.</div>
+                  </div>
+                </md-input-container>
+              </md-content>
+            </md-tab>
+            <md-tab label="Attributes">
+              <md-content class="md-padding">
+                <h5">Attributes</h5>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>State</label>
+                  <md-select ng-model="product.attribute">
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}"> {{state.abbrev}} </md-option>
+                  </md-select>
+                </md-input-container>
+              </md-content>
+            </md-tab>
+            <md-tab label="Shipping & Pricing">
+              <md-content class="md-padding">
+                <h5>Shipping & Pricing</h5>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.mrp.$invalid && productForm.mrp.$dirty, 'has-success': productForm.mrp.$valid }">
+                      <label>MRP</label>
+                      <input name="mrp" type="number" ng-model="product.mrp" required>
+                      <div ng-messages="productForm.mrp.$dirty && productForm.mrp.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">MRP is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.msp.$invalid && productForm.msp.$dirty, 'has-success': productForm.msp.$valid }">
+                      <label>Selling Price</label>
+                      <input name="msp" type="number" ng-model="product.msp" required>
+                      <div ng-messages="productForm.msp.$dirty && productForm.msp.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Maximum Selling Price is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.inventory.$invalid && productForm.inventory.$dirty, 'has-success': productForm.inventory.$valid }">
+                      <label>Inventory</label>
+                      <input name="inventory" type="number" ng-model="product.inventory" required>
+                      <div ng-messages="productForm.inventory.$dirty && productForm.inventory.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Inventory is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.shippingtime.$invalid && productForm.shippingtime.$dirty, 'has-success': productForm.shippingtime.$valid }">
+                      <label>Shipping Time in Days</label>
+                      <input name="shippingtime" type="number" ng-model="product.shippingtime" required>
+                      <div ng-messages="productForm.shippingtime.$dirty && productForm.shippingtime.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Shipping Time is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.height.$invalid && productForm.height.$dirty, 'has-success': productForm.height.$valid }">
+                      <label>Height (CM)</label>
+                      <input name="height" type="number"  ng-model="product.height" required>
+                      <div ng-messages="productForm.height.$dirty && productForm.height.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Height is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.width.$invalid && productForm.width.$dirty, 'has-success': productForm.width.$valid }">
+                      <label>Width (CM)</label>
+                      <input name="width" type="number"  ng-model="product.width" required>
+                      <div ng-messages="productForm.width.$dirty && productForm.width.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Width is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                  <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.lenght.$invalid && productForm.lenght.$dirty, 'has-success': productForm.lenght.$valid }">
+                      <label>Length (CM)</label>
+                      <input name="lenght" type="number"  ng-model="product.lenght" required>
+                      <div ng-messages="productForm.lenght.$dirty && productForm.lenght.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Lenght is required.</div>
+                      </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm ng-class="{'has-error': productForm.weight.$invalid && productForm.weight.$dirty, 'has-success': productForm.weight.$valid }">
+                      <label>Weight (G)</label>
+                      <input name="weight" type="number"  ng-model="product.weight" required>
+                      <div ng-messages="productForm.weight.$dirty && productForm.weight.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Brand is required.</div>
+                      </div>
+                    </md-input-container>
+                  </div>
+                   <div layout-gt-sm="row">
+                    <md-button md-no-ink class="md-raised md-primary">Preview</md-button>
+                    <md-button class="md-raised md-warn" type="submit">Save to Draft</md-button>
+                   </div>  
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
